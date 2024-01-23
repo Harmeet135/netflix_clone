@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import Billboard from './components/banner';
+import InfoModal from './components/infocard';
+import MovieCard from './components/moviescard';
+import MovieList from './components/movieslist';
+import MovieList2 from './components/movieslist2';
+import Navbar from './components/navbar';
+import UserList from './components/userlist';
+import useInfoModalStore from './hooks/infocardmodel';
 
 function App() {
+  const {isOpen, closeModal} = useInfoModalStore();
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <InfoModal visible={isOpen} onClose={closeModal} />
+    <Navbar />
+    <Billboard />
+    <MovieList />
+    <MovieList2 />
+    <UserList />
     </div>
   );
 }
